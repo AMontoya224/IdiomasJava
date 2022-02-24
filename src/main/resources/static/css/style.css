@@ -77,6 +77,10 @@ td:hover{
 	color: DarkRed;
 }
 
+main{
+	margin-top: 2vw;
+}
+
 div{
 	margin: 1vw 27vw;
 	text-align: left;

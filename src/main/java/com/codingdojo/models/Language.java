@@ -29,9 +29,7 @@ public class Language {
 	private String currentVersion;
 
 	public Language() {
-		this.name = "N/A";
-		this.creator = "N/A";
-		this.currentVersion = "N/A";
+		
 	}
 	
 	public Language(String name, String creator, String currentVersion) {

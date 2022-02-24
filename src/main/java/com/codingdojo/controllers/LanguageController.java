@@ -43,14 +43,6 @@ public class LanguageController {
 		return "redirect:/languages/";
 	}
 	
-	@RequestMapping( value="/edit/{id}", method=RequestMethod.GET )
-	public String edit( @PathVariable("id") int id, Model model, @ModelAttribute("language") Language language ) {
-		Language languageEncontrado = languageService.selectFromLanguagesWhereId(id);
-		model.addAttribute( "language", languageEncontrado );
-		
-		return "edit.jsp";
-	}
-	
 	@RequestMapping( value="/{id}", method=RequestMethod.GET )
 	public String show(@PathVariable("id") int id, Model model ) {
 		Language languageEncontrado = languageService.selectFromLanguagesWhereId(id);
@@ -59,11 +51,17 @@ public class LanguageController {
 		return "show.jsp";
     }
 	
+	@RequestMapping( value="/edit/{id}", method=RequestMethod.GET )
+	public String edit( @PathVariable("id") int id, Model model, @ModelAttribute("language") Language language ) {
+		Language languageEncontrado = languageService.selectFromLanguagesWhereId(id);
+		model.addAttribute( "language", languageEncontrado );
+		
+		return "edit.jsp";
+	}
+	
 	@RequestMapping( value="/update", method=RequestMethod.PUT )
-	public String update(@Valid @ModelAttribute("language") Language language, Model model, BindingResult result) {
-        if (result.hasErrors()) {
-        	Language expenseEncontrado = languageService.selectFromLanguagesWhereId(language.getId());
-    		model.addAttribute( "language", expenseEncontrado );
+	public String update(@Valid @ModelAttribute("language") Language language, BindingResult result) {
+		if (result.hasErrors()) {
             return "edit.jsp";
         } 
         else {

@@ -18,7 +18,7 @@ public class LanguageService {
 	public List<Language> selectAllFromLanguages(){
 		List<Language> languagesList = languageRepository.findAll();
 		if ( languagesList.isEmpty() ) {
-			Language languageVacio = new Language();
+			Language languageVacio = new Language("N/A", "N/A", "N/A");
 			languagesList.add(languageVacio);
 		}
 		return languagesList;
